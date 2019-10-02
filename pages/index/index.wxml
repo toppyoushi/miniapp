@@ -1,2 +1,44 @@
-<!--index.wxml-->
-<text>pages/index/index.wxml</text>
+<!-- index.wxml -->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">表单消息</view>
+    <view wx:if="{{assert}}" class="page__desc">查看自己填写的表单并给管理员留言</view>
+    <view wx:else>你还没有填写过表单</view>
+  </view>
+  <view wx:if="{{assert}}" class="page__bd">
+    <view wx:for="{{list_info}}" class="weui-form-preview">
+      <view class="weui-form-preview__hd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">表单号</view>
+          <view class="weui-form-preview__value">{{item.list_id}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">表单类型</view>
+          <view class="weui-form-preview__value">{{list_name[item.list_type]}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">提交时间</view>
+          <view class="weui-form-preview__value">{{item.submit_time}}</view>
+        </view>
+      </view>
+      <!-- <view class="weui-form-preview__ft"> -->
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="naviToInfo" data-id="{{item.list_id}}" data-type="{{item.list_type}}">
+        <view class="weui-cell__bd">
+          <view style="display: inline-block; vertical-align: middle">详细信息</view>
+          <view class="weui-badge" style="margin-left: 5px;">新消息</view>
+        </view>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </view>
+      <!-- </view> -->
+    </view>
+  </view>
+  <view wx:else class="page__bd">
+    <view class="weui-cell">
+      <button class="weui-btn mini-btn" type="primary" size="mini" bindtap="bindButtonTap" plain='true'>
+        去填写表单
+      </button>
+    </view>
+  </view>
+</view>

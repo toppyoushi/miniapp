@@ -1,0 +1,210 @@
+<!--pages/preg_record/preg_record.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">配种记录</view>
+  </view>
+  <view class="page__bd">
+    <!-- <view class="weui-cells__title">表单</view> -->
+    <form bindsubmit='onSubmit'>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">母牛号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="pid" class="weui-input" placeholder="请输入母牛号" bindconfirm='bindPidChange' />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">上胎分娩日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="weui-input">{{date}}</view>
+          </view>
+        </view>
+
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">发情开始时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="time12" value="{{time12}}" start="00:00" end="23:59" bindchange="bindTime12Change">
+              <view class="weui-input">{{time12}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">发情结束时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="time13" value="{{time13}}" start="00:00" end="23:59" bindchange="bindTime13Change">
+              <view class="weui-input">{{time13}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第1次配种日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" name="firstdate" value="{{firstdate}}" start="2019-01-01" end="2020-12-31" bindchange="bindFirstDateChange">
+              <view class="weui-input">{{firstdate}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第1次配种时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="firsttime" value="{{firsttime}}" start="00:00" end="23:59" bindchange="bindFirstTimeChange">
+              <view class="weui-input">{{firsttime}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第1次冻精编号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="firstid" value="{{firstid}}" class="weui-input" bindconfirm='bindFirstIdChange' />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第2次配种日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" name="seconddate" value="{{seconddate}}" start="2019-01-01" end="2020-12-31" bindchange="bindSecondDateChange" disabled='{{!check2}}'>
+              <view class="weui-input">{{seconddate}}</view>
+            </picker>
+          </view>
+          <view class="weui-cell__ft">
+          <switch checked="{{check2}}" bindchange='bindCheck2Change' />
+        </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第2次配种时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="secondtime" value="{{secondtime}}" start="00:00" end="23:59" bindchange="bindSecondTimeChange" disabled='{{!check2}}'>
+              <view class="weui-input">{{secondtime}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第2次冻精编号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="secondid" value="{{secondid}}" class="weui-input" disabled='{{!check2}}' bindconfirm='bindSecondIdChange'/>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第3次配种日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" name="thirddate" value="{{thirddate}}" start="2019-01-01" end="2020-12-31" bindchange="bindThirdDateChange" disabled='{{!check3}}'>
+              <view class="weui-input">{{thirddate}}</view>
+            </picker>
+          </view>
+          <view class="weui-cell__ft">
+          <switch checked="{{check3}}" bindchange='bindCheck3Change'/>
+        </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第3次配种时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="thirdtime" value="{{thirdtime}}" start="00:00" end="23:59" bindchange="bindThirdTimeChange" disabled='{{!check3}}'>
+              <view class="weui-input">{{thirdtime}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第3次冻精编号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="thirdid" value='{{thirdid}}' class="weui-input" disabled='{{!check3}}' bindconfirm='bindThirdIdChange'/>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第4次配种日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" name="fourthdate" value="{{fourthdate}}" start="2019-01-01" end="2020-12-31" bindchange="bindFourthDateChange" disabled='{{!check4}}'>
+              <view class="weui-input">{{fourthdate}}</view>
+            </picker>
+          </view>
+          <view class="weui-cell__ft">
+          <switch checked="{{check4}}" bindchange='bindCheck4Change'/>
+        </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第4次配种时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="fourthtime" value="{{fourthtime}}" start="00:00" end="23:59" bindchange="bindFourthTimeChange" disabled='{{!check4}}'>
+              <view class="weui-input">{{fourthtime}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">第4次冻精编号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="fourthid" value="{{fourthid}}" class="weui-input" disabled='{{!check4}}' bindconfirm='bindFourthIdChange'/>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">最后1次配种日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" name="lastdate" value="{{lastdate}}" start="2019-01-01" end="2020-12-31" bindchange="bindlastDateChange">
+              <view class="weui-input">{{lastdate}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">最后1次配种时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="lasttime" value="{{lasttime}}" start="00:00" end="23:59" bindchange="bindlastTimeChange">
+              <view class="weui-input">{{lasttime}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">最后1次冻精编号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="lastid" class="weui-input" value="{{lastid}}" disabled='true'/>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">配种间隔</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="interval" value="{{interval}}" disabled="true"/>
+          </view>
+        </view>
+      </view>
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" form-type='submit'>提交</button>
+      </view>
+    </form>
+  </view>
+</view>

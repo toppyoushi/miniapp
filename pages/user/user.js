@@ -1,11 +1,14 @@
 // pages/user/user.js
+var app=getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    uid:"",
+    uname:"",
+    fname:""
   },
 
   /**
@@ -26,7 +29,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.request({
+      url:"",
+      data:this.data.uid,
+      success:function(res){
+        this.setData({
+          uname:res.uname,
+          fname:res.fname
+        })
+      }
+    })
   },
 
   /**
@@ -47,7 +59,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    
   },
 
   /**

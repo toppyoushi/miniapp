@@ -6,13 +6,74 @@ Page({
    */
   data: {
     array: ['员工','管理员'],
-    index:0
+    index:0,
+    tel:""
+  },
+  bindTelChange:function(e){
+    this.setData({
+      tel:e.detail.value
+    })
   },
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
     })
+  },
+  bindGetVcode: function () {
+    if (this.data.tel == "") {
+      wx.showModal({
+        title: '获取验证码失败',
+        content: '请先输入手机号',
+        showCancel: false,
+        confirmText: '确定',
+        complete: function (res) {
+        },
+      })
+    } else {
+      wx.request({
+        url: 'getvcode',
+        data: {
+          tel: this.data.tel
+        },
+        success: function () {
+          wx.showToast({
+            title: '验证码已发送至手机',
+            icon: 'success',
+            duration: 2000
+          })
+        },
+        fail: function () {
+          wx.showToast({
+            title: '验证码发送失败',
+            icon: 'success',
+            duration: 2000
+          })
+        }
+      })
+    }
+
+  },
+  userRegister:function(e){
+    console.log(e.detail.value)
+    console.log(this.data.array[this.data.index])
+
+    // wx.request({
+    //   url: 'register',
+    //   data:{
+    //     uname:e.detail.value.uname,
+    //     pwd:e.detail.value.pwd,
+    //     fname:e.detail.value.fname,
+    //     degree:this.data.array[this.data.index],
+    //     tel:e.detail.value.tel,
+    //     vcode:e.detail.value.vcode
+    //   },
+    //   success:function(res){
+        wx.navigateTo({
+          url: './reg_success',
+        })
+  //     }
+  //   })
   },
   /**
    * 生命周期函数--监听页面加载

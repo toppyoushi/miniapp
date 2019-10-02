@@ -1,131 +1,136 @@
 <!--pages/preg_record/preg_record.wxml-->
 <view class="page">
-    <view class="page__bd">
+  <view class="page__hd">
+    <view class="page__title">繁殖记录</view>
+  </view>
+  <view class="page__bd">
     <!-- <view class="weui-cells__title">表单</view> -->
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">母牛号</view>
+    <form bindsubmit='onSubmit'>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">母牛号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="pid" class="weui-input" placeholder="请输入母牛号" />
+          </view>
         </view>
-        <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入母牛号" />
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">分娩日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" name="date" value="{{date}}" start="2019-01-01" end="2020-12-31" bindchange="bindDateChange">
+              <view class="weui-input">{{date}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">开始流水时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="time3" value="{{time3}}" start="00:00" end="23:59" bindchange="bindTime3Change">
+              <view class="weui-input">{{time3}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">胎儿露出时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="time4" value="{{time4}}" start="00:00" end="23:59" bindchange="bindTime4Change">
+              <view class="weui-input">{{time4}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">胎儿露出器官</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name="organ" value="{{organIndex}}" range="{{organItems}}" bindchange="bindOrganChange">
+              <view class="weui-input">{{organItems[organIndex]}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">胎儿娩出时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="time6" value="{{time6}}" start="00:00" end="23:59" bindchange="bindTime6Change">
+              <view class="weui-input">{{time6}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">胎盘排出时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" name="time7" value="{{time7}}" start="00:00" end="23:59" bindchange="bindTime7Change">
+              <view class="weui-input">{{time7}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">产犊难易差</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="weui-input" name="difficulty" value="{{difficulty}}">{{difficulty}}</view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">胎衣是否完整</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name="intact" value="{{intactIndex}}" range="{{intactItems}}" bindchange="bindIntactChange">
+              <view class="weui-input">{{intactItems[intactIndex]}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">犊牛性别</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name="gender" value="{{genderIndex}}" range="{{genderItems}}" bindchange="bindGenderChange">
+              <view class="weui-input">{{genderItems[genderIndex]}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">犊牛体重</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="weight" class="weui-input" placeholder="请输入犊牛体重" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">犊牛乳头距离</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="distance" placeholder="请输入犊牛乳头距离" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">估计育种值</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="estivalue" placeholder="估计育种值" />
+          </view>
         </view>
       </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">分娩日期</view>
-        </view>
-        <view class="weui-cell__bd">
-          <picker mode="date" value="{{date}}" start="2019-01-01" end="2020-12-31" bindchange="bindDateChange">
-            <view class="weui-input">{{date}}</view>
-          </picker>
-        </view>
+      <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" form-type='submit'>提交</button>
       </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">开始流水时间</view>
-        </view>
-        <view class="weui-cell__bd">
-          <picker mode="time" value="{{time3}}" start="00:00" end="23:59" bindchange="bindTime3Change">
-            <view class="weui-input">{{time3}}</view>
-          </picker>
-        </view>
-      </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">胎儿露出时间</view>
-        </view>
-        <view class="weui-cell__bd">
-          <picker mode="time" value="{{time4}}" start="00:00" end="23:59" bindchange="">
-            <view class="weui-input">{{time4}}</view>
-          </picker>
-        </view>
-      </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">胎儿露出器官</view>
-        </view>
-        <view class="weui-cell__bd">
-          <picker value="{{organIndex}}" range="{{organItems}}" bindchange="bindOrganChange">
-            <view class="weui-input">{{organItems[organIndex]}}</view>
-          </picker>
-        </view>
-      </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">胎儿娩出时间</view>
-        </view>
-        <view class="weui-cell__bd">
-          <picker mode="time" value="{{time6}}" start="00:00" end="23:59" bindchange="bindTime6Change">
-            <view class="weui-input">{{time6}}</view>
-          </picker>
-        </view>
-      </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">胎盘排出时间</view>
-        </view>
-        <view class="weui-cell__bd">
-          <picker mode="time" value="{{time7}}" start="00:00" end="23:59" bindchange="">
-            <view class="weui-input">{{time7}}</view>
-          </picker>
-        </view>
-      </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">产犊难易差</view>
-        </view>
-        <view class="weui-cell__bd">
-            <view class="weui-input" >{{difficulty}}</view>
-        </view>
-      </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">胎衣是否完整</view>
-        </view>
-        <view class="weui-cell__bd">
-          <picker value="{{intactIndex}}" range="{{intactItems}}" bindchange="bindIntactChange">
-            <view class="weui-input">{{intactItems[intactIndex]}}</view>
-          </picker>
-        </view>
-      </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">犊牛性别</view>
-        </view>
-        <view class="weui-cell__bd">
-          <picker value="{{genderIndex}}" range="{{genderItems}}" bindchange="bindGenderChange">
-            <view class="weui-input">{{genderItems[genderIndex]}}</view>
-          </picker>
-        </view>
-      </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">犊牛体重</view>
-        </view>
-        <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入犊牛体重" />
-        </view>
-      </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">犊牛乳头距离</view>
-        </view>
-        <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入犊牛乳头距离" />
-        </view>
-      </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">估计育种值</view>
-        </view>
-        <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="估计育种值" />
-        </view>
-      </view>
-    </view>
-    <view class="weui-btn-area">
-      <button class="weui-btn" type="primary" bindtap="">提交</button>
-    </view>
+    </form>
   </view>
 </view>

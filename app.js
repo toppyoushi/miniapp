@@ -30,6 +30,6 @@ App({
   },
 
   globalData: {
-    
+    session:""
   }
 })

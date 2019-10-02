@@ -1,0 +1,114 @@
+<!--pages/preg_record/preg_record.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">繁殖记录</view>
+  </view>
+  <view class="page__bd">
+    <!-- <view class="weui-cells__title">表单</view> -->
+    <form bindsubmit='onSubmit'>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">母牛号</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="pid" class="weui-input" placeholder="请输入母牛号" bindconfirm='bindPidChange'/>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">检查日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" name="date" value="{{checkdate}}" start="2019-01-01" end="2020-12-31" bindchange="bindCheckDateChange">
+              <view class="weui-input">{{checkdate}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">配种日期</view>
+          </view>
+          <view class="weui-cell__bd">
+              <input class="weui-input" value='{{matedate}}' disabled='{{true}}'/>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">妊娠</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name="preg" value="{{pregnantIndex}}" range="{{items}}" bindchange="bindpregChange">
+              <view class="weui-input">{{items[pregnantIndex]}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">预计分娩日期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <view class="weui-input" name="difficulty" value="{{difficulty}}">{{difficulty}}</view>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">空怀</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name="barren" value="{{barrenIndex}}" range="{{items}}" bindchange="bindBarrenChange">
+              <view class="weui-input">{{items[barrenIndex]}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">卵巢直径</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="oari" class="weui-input" placeholder="请输入卵巢直径" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">卵泡直径</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="foli" class="weui-input" placeholder="请输入卵泡直径" />
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">子宫炎症</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name="uter" value="{{uterIndex}}" range="{{items}}" bindchange="bindUterChange">
+              <view class="weui-input">{{items[uterIndex]}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">阴道炎症</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker name="uter" value="{{vagIndex}}" range="{{items}}" bindchange="bindVagChange">
+              <view class="weui-input">{{items[vagIndex]}}</view>
+            </picker>
+          </view>
+        </view>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">妊娠期</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input name="pid" class="weui-input" placeholder="请输入母牛号" />
+          </view>
+        </view>
+        <view class="weui-btn-area">
+          <button class="weui-btn" type="primary" form-type='submit'>提交</button>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>

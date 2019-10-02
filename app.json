@@ -5,7 +5,14 @@
     "pages/user/user",
     "pages/sheet/sheet",
     "pages/register/register",
-    "pages/preg_record/preg_record"
+    "pages/preg_record/preg_record",
+    "pages/mate_record/mate_record",
+    "pages/diagn_record/diagn_record",
+    "pages/user_info/user_info",
+    "pages/account_info/account_info",
+    "pages/list_info/list_info",
+    "pages/register/reg_success",
+    "pages/register/reg_fail"
   ],
   "window": {
     "navigationBarTextStyle": "black",

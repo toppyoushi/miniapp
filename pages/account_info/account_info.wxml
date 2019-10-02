@@ -1,0 +1,32 @@
+<!-- pages/login/login.wxml -->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">修改账户信息</view>
+  </view>
+  <form bindsubmit='bindModify'>
+  <view class="page__bd">
+    <!-- <view class="weui-cells__title">表单</view> -->
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">用户名</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="uname" class="weui-input" placeholder="请输入用户名" />
+        </view>
+      </view>
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">密码</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input name="pwd" class="weui-input" placeholder="请输入密码" password="{{true}}" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-btn-area">
+      <button class="weui-btn" type="primary" form-type='submit'>提交</button>
+    </view>
+  </view>
+  </form>
+</view>
